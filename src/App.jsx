@@ -9,10 +9,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import Home from "./Components/home";
 import Login from "./Components/login";
+import Basket from "./Components/basket";
 library.add(fas);
 
 class App extends Component {
-  state = { products: [], category: [], shoppingCart: 0 };
+  state = { products: [], category: [], shoppingCart: [] };
 
   async componentDidMount() {
     const { data: products } = await Axios.get(
@@ -26,8 +27,6 @@ class App extends Component {
 
     const shoppingCart = [];
     this.setState({ products, category, shoppingCart });
-    console.log("mounted");
-    console.log(products);
   }
 
   handleIncrement = (product) => {
@@ -35,9 +34,6 @@ class App extends Component {
     let productIndex = products.indexOf(product);
     products[productIndex].count++;
     this.setState({ products });
-
-    console.log(product);
-    console.log(products);
   };
   handleDecrement = (product) => {
     const { products } = { ...this.state };
@@ -84,11 +80,26 @@ class App extends Component {
           onCheck={this.checkNumber}
         />
 
-        <div className="container-fluid ">
+        <div className="container-fluid mt-5">
           <div className="row">
             <div className="col">
               <Switch>
-                <Route path={"/login"} component={Login}></Route>
+                <Route path={"/login"}>
+                  <Login />
+                </Route>
+                <Route
+                  path={"/basket"}
+                  render={(props) => (
+                    <Basket
+                      {...props}
+                      products={products}
+                      shoppingCart={shoppingCart}
+                      onIncrement={this.handleIncrement}
+                      onDecrement={this.handleDecrement}
+                      onCheck={this.checkNumber}
+                    />
+                  )}
+                ></Route>
                 <Route
                   path={"/products:category?"}
                   render={(props) => (
@@ -99,7 +110,9 @@ class App extends Component {
                     />
                   )}
                 ></Route>
-                <Route path={"/"} component={Home}></Route>
+                <Route path={"/"}>
+                  <Home />
+                </Route>
               </Switch>
             </div>
           </div>

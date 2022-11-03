@@ -5,10 +5,15 @@ class Home extends Component {
   render() {
     return (
       <>
-        <h1>Home Page</h1>
-        <hr />
-
-        <Trending />
+        <div className="container">
+          <h4>Welcome to Farfar onlineshop</h4>
+          <hr />
+          <div className="row justify-content-center">
+            <div className="col-10">
+              <Trending />
+            </div>
+          </div>
+        </div>
       </>
     );
   }

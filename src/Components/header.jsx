@@ -9,7 +9,7 @@ class Header extends Component {
     console.log(shoppingCart);
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               Navbar
@@ -42,108 +42,19 @@ class Header extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  {/* Modal Begins */}
-                  <button
-                    type="button"
-                    className="btn btn-light btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                  <NavLink
+                    className="nav-link"
+                    aria-current="page"
+                    to={"/basket"}
                   >
-                    <FontAwesomeIcon icon={"basket-shopping"} />
+                    <FontAwesomeIcon
+                      icon={"basket-shopping"}
+                      className="btn btn-outline-danger"
+                    />
                     <span className="badge text-bg-secondary">
                       {shoppingCart.length}
                     </span>
-                  </button>
-
-                  <div
-                    className="modal fade"
-                    id="exampleModal"
-                    tabIndex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h1
-                            className="modal-title fs-5"
-                            id="exampleModalLabel"
-                          >
-                            Shopping Cart
-                          </h1>
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div className="modal-body">
-                          <table className="table table-striped align-middle">
-                            <caption>User's Shopping Cart</caption>
-                            <thead>
-                              <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Count</th>
-                                <th scope="col">Sum</th>
-                              </tr>
-                            </thead>
-                            <tbody className="table-group-divider table-hover">
-                              {products.map((p) => (
-                                <tr key={p.id}>
-                                  <td>{`${p.title}`}</td>
-                                  <td>{`${p.price}`}</td>
-                                  <td>
-                                    <div
-                                      className="btn-group btn-group-sm"
-                                      role="group"
-                                    >
-                                      <button
-                                        className="btn btn-success"
-                                        onClick={() => onIncrement(p)}
-                                      >
-                                        <FontAwesomeIcon icon={"plus"} />
-                                      </button>
-
-                                      <button
-                                        className="btn btn-light"
-                                        disabled
-                                      >
-                                        {/* {onCheck(products.count)} */}
-                                        {`${p.productQuantity}`}
-                                      </button>
-                                      <button
-                                        className="btn btn-danger"
-                                        onClick={() => onDecrement(p)}
-                                      >
-                                        <FontAwesomeIcon icon={"minus"} />
-                                      </button>
-                                    </div>
-                                  </td>
-                                  <td>{`${p.price * p.quantity}`}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                            <tfoot></tfoot>
-                          </table>
-                        </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Modal Ends */}
+                  </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink

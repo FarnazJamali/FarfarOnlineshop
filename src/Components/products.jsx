@@ -4,7 +4,7 @@ import Product from "./product";
 class Products extends Component {
   render() {
     // const { title, onIncrement, onDecrement } = this.props;
-    const { products, onIncrement, onDecrement, onAdd } = this.props;
+    const { products, onAdd } = this.props;
 
     // const { categoryItem } = this.props.match.params;
     // let filteredCategory = [];
@@ -50,7 +50,7 @@ class Products extends Component {
         <div className="container">
           <div className="row row-cols-md-5 g-4 m-3">
             {products.map((product) => (
-              <Product products={product} onAdd={onAdd} key={product.id} />
+              <Product product={product} onAdd={onAdd} key={product.id} />
             ))}
           </div>
         </div>
