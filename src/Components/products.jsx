@@ -4,7 +4,7 @@ import Product from "./product";
 class Products extends Component {
   render() {
     // const { title, onIncrement, onDecrement } = this.props;
-    const { products, onAdd } = this.props;
+    const { products, onAdd, shoppingCart } = this.props;
 
     // const { categoryItem } = this.props.match.params;
     // let filteredCategory = [];

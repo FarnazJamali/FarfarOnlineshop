@@ -18,7 +18,7 @@ class Product extends Component {
                 <span className="fw-bold">{product.price} $</span>
                 <button
                   className="btn btn-sm btn-danger"
-                  onClick={() => onAdd(product.id)}
+                  onClick={() => onAdd(product)}
                 >
                   Add to Cart!
                 </button>

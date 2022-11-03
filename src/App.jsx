@@ -19,8 +19,7 @@ class App extends Component {
     const { data: products } = await Axios.get(
       "https://fakestoreapi.com/products"
     );
-    products.map((p) => (p.count = 0));
-
+    products.map((product) => (product.count = 0));
     const { data: category } = await Axios.get(
       "https://fakestoreapi.com/products/categories"
     );
@@ -29,6 +28,26 @@ class App extends Component {
     this.setState({ products, category, shoppingCart });
   }
 
+  checkNumber = (product) => {
+    return product.count;
+  };
+  handleAddToCart = (product) => {
+    console.log(product);
+    const { shoppingCart, products } = { ...this.state };
+    const hasProduct = shoppingCart.some((item) => item === product);
+    console.log(hasProduct);
+    let productIndex = products.indexOf(product);
+    console.log(productIndex);
+    if (!hasProduct) {
+      shoppingCart.push(products[productIndex]);
+      shoppingCart[productIndex].count = 1;
+    } else {
+      shoppingCart[shoppingCart.length - 1].count++;
+    }
+    console.log(shoppingCart);
+
+    this.setState({ shoppingCart });
+  };
   handleIncrement = (product) => {
     const { products } = { ...this.state };
     let productIndex = products.indexOf(product);
@@ -42,30 +61,6 @@ class App extends Component {
     if (products[productIndex].count < 0) products[productIndex].count = 0;
     this.setState({ products });
     console.log(product);
-  };
-
-  handleAddToCart = (...args) => {
-    const { shoppingCart, products } = { ...this.state };
-    const hasProduct = shoppingCart.some(
-      (item) => (item.id = products[args[0]].id)
-    );
-    let productIndex = products.findIndex(
-      (pObject) => pObject.id === products[args[0]].id
-    );
-    if (!hasProduct) {
-      shoppingCart.push(products[productIndex - 1]);
-      shoppingCart[productIndex - 1].count = 1;
-    } else {
-      shoppingCart[shoppingCart.length - 1].count++;
-    }
-
-    console.log(hasProduct);
-    console.log(shoppingCart);
-
-    this.setState({ shoppingCart });
-  };
-  checkNumber = (count) => {
-    return count;
   };
   render() {
     const { products, shoppingCart } = this.state;
@@ -106,6 +101,7 @@ class App extends Component {
                     <Products
                       {...props}
                       products={products}
+                      shoppingCart={shoppingCart}
                       onAdd={this.handleAddToCart}
                     />
                   )}

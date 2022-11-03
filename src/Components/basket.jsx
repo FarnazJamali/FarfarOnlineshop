@@ -3,8 +3,7 @@ import React, { Component } from "react";
 class Basket extends Component {
   state = {};
   render() {
-    const { products, shoppingCart, onIncrement, onDecrement, onCheck } =
-      this.props;
+    const { shoppingCart, onIncrement, onDecrement, onCheck } = this.props;
     return (
       <>
         <div className="container">
@@ -35,8 +34,7 @@ class Basket extends Component {
                           </button>
 
                           <button className="btn btn-light" disabled>
-                            {/* {onCheck(products.count)} */}
-                            {`${product.productQuantity}`}
+                            {onCheck(product.count)}
                           </button>
                           <button
                             className="btn btn-danger"
@@ -46,16 +44,15 @@ class Basket extends Component {
                           </button>
                         </div>
                       </td>
-                      <td>{`${product.price * product.quantity}`}</td>
+                      <td>{`${product.price * product.count}`}</td>
                     </tr>
                   ))}
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
                 </tbody>
-                <tfoot></tfoot>
+                <tfoot>
+                  {shoppingCart.reduce((acc, cur) => {
+                    return acc + cur.count * cur.price;
+                  }, 0)}
+                </tfoot>
               </table>
             </div>
           </div>
