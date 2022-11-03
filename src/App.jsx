@@ -10,6 +10,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import Home from "./Components/home";
 import Login from "./Components/login";
 import Basket from "./Components/basket";
+import Footer from "./Components/footer";
 library.add(fas);
 
 class App extends Component {
@@ -75,7 +76,7 @@ class App extends Component {
           onCheck={this.checkNumber}
         />
 
-        <div className="container-fluid mt-5">
+        <div className="container-fluid mt-5 min-vh-100">
           <div className="row">
             <div className="col">
               <Switch>
@@ -113,6 +114,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <footer>
+          <Footer />
+        </footer>
       </>
     );
   }

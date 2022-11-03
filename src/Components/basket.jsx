@@ -6,9 +6,9 @@ class Basket extends Component {
     const { shoppingCart, onIncrement, onDecrement, onCheck } = this.props;
     return (
       <>
-        <div className="container">
-          <div className="row m-3">
-            <div className="col-6 mx-auto">
+        <div className="container vh-100">
+          <div className="row m-3 justify-content-center align-items-center">
+            <div className="col-6 ">
               <table className="table table-striped align-middle">
                 <caption>User's Shopping Cart</caption>
                 <thead>
@@ -49,9 +49,16 @@ class Basket extends Component {
                   ))}
                 </tbody>
                 <tfoot>
-                  {shoppingCart.reduce((acc, cur) => {
-                    return acc + cur.count * cur.price;
-                  }, 0)}
+                  <tr>
+                    <th colSpan="3" scope="row">
+                      Total sum
+                    </th>
+                    <td>
+                      {shoppingCart.reduce((acc, cur) => {
+                        return acc + cur.count * cur.price;
+                      }, 0)}
+                    </td>
+                  </tr>
                 </tfoot>
               </table>
             </div>
