@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { Route, Switch } from "react-router-dom";
-// import Category from "./Components/category";
-
 import Header from "./Components/header";
 import Products from "./Components/products";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -29,8 +27,8 @@ class App extends Component {
     this.setState({ products, category, shoppingCart });
   }
 
-  checkNumber = (product) => {
-    return product.count;
+  checkNumber = (count) => {
+    return count;
   };
   handleAddToCart = (product) => {
     console.log(product);
@@ -63,6 +61,13 @@ class App extends Component {
     this.setState({ products });
     console.log(product);
   };
+  handleDelete = (product) => {
+    const { shoppingCart } = { ...this.state };
+    const filteredShoppingCart = shoppingCart.filter(
+      (p) => product.id !== p.id
+    );
+    this.setState({ shoppingCart: filteredShoppingCart });
+  };
   render() {
     const { products, shoppingCart } = this.state;
     console.log(this.state);
@@ -92,6 +97,7 @@ class App extends Component {
                       shoppingCart={shoppingCart}
                       onIncrement={this.handleIncrement}
                       onDecrement={this.handleDecrement}
+                      onDelete={this.handleDelete}
                       onCheck={this.checkNumber}
                     />
                   )}
@@ -104,6 +110,8 @@ class App extends Component {
                       products={products}
                       shoppingCart={shoppingCart}
                       onAdd={this.handleAddToCart}
+                      onIncrement={this.handleIncrement}
+                      onDecrement={this.handleDecrement}
                     />
                   )}
                 ></Route>

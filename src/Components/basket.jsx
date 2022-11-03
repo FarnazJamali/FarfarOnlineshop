@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class Basket extends Component {
   state = {};
   render() {
-    const { shoppingCart, onIncrement, onDecrement, onCheck } = this.props;
+    const { shoppingCart, onIncrement, onDecrement, onCheck, onDelete } =
+      this.props;
     return (
       <>
         <div className="container vh-100">
@@ -34,13 +35,19 @@ class Basket extends Component {
                           </button>
 
                           <button className="btn btn-light" disabled>
-                            {onCheck(product.count)}
+                            {`${product.count}`}
                           </button>
                           <button
                             className="btn btn-danger"
                             onClick={() => onDecrement(product)}
                           >
                             <FontAwesomeIcon icon={"minus"} />
+                          </button>
+                          <button
+                            className="btn"
+                            onClick={() => onDelete(product)}
+                          >
+                            <FontAwesomeIcon icon={"trash-alt"} />
                           </button>
                         </div>
                       </td>

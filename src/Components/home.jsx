@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div className="container">
+        <div className="container my-5">
           <h4>Welcome to Farfar onlineshop</h4>
           <hr />
           <div className="row justify-content-center">
