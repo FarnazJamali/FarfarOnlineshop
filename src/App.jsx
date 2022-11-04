@@ -10,6 +10,7 @@ import Login from "./Components/login";
 import Basket from "./Components/basket";
 import Footer from "./Components/footer";
 import Register from "./Components/register";
+import ProductItem from "./Components/productItem";
 library.add(fas);
 
 class App extends Component {
@@ -107,7 +108,13 @@ class App extends Component {
                   )}
                 ></Route>
                 <Route
-                  path={"/products:category?"}
+                  path={"/productItem/:id?"}
+                  render={(props) => (
+                    <ProductItem {...props} products={products} />
+                  )}
+                ></Route>
+                <Route
+                  path={"/products"}
                   render={(props) => (
                     <Products
                       {...props}

@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class Product extends Component {
   state = {};
@@ -45,6 +46,16 @@ class Product extends Component {
                   </div>
                 )}
               </small>
+              <div className="d-grid d-block gap-2 my-2">
+                <button className="btn btn-sm btn-secondary">
+                  <NavLink
+                    className="text-decoration-none text-light"
+                    to={`/productItem/${product.id}`}
+                  >
+                    More
+                  </NavLink>
+                </button>
+              </div>
             </div>
           </div>
         </div>

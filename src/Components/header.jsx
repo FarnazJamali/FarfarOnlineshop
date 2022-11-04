@@ -9,7 +9,7 @@ class Header extends Component {
     console.log(shoppingCart);
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nav-fill">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               Navbar
@@ -56,14 +56,27 @@ class Header extends Component {
                     </span>
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link ms-auto flex-grow"
-                    aria-current="page"
-                    to={"/login"}
-                  >
-                    Login
-                  </NavLink>
+                <li className="nav-item ">
+                  <div className="btn-group btn-group-sm " role="group">
+                    <button type="button" className="btn btn-outline-primary">
+                      <NavLink
+                        className="nav-link ms-auto flex-grow"
+                        aria-current="page"
+                        to={"/login"}
+                      >
+                        Login
+                      </NavLink>
+                    </button>
+                    <button type="button" className="btn btn-outline-primary">
+                      <NavLink
+                        className="nav-link ms-auto flex-grow"
+                        aria-current="page"
+                        to={"/register"}
+                      >
+                        Register
+                      </NavLink>
+                    </button>
+                  </div>
                 </li>
               </ul>
             </div>
