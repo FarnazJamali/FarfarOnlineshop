@@ -6,9 +6,12 @@ class Home extends Component {
     return (
       <>
         <div className="container my-5">
-          <h4>Welcome to Farfar onlineshop</h4>
-          <hr />
           <div className="row justify-content-center">
+            <div className="col-7">
+              <div className="alert alert-success text-center" role="alert">
+                Welcome to Farfar onlineshop
+              </div>
+            </div>
             <div className="col-10">
               <Trending />
             </div>

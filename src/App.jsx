@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Header from "./Components/header";
 import Products from "./Components/products";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -11,6 +11,7 @@ import Basket from "./Components/basket";
 import Footer from "./Components/footer";
 import Register from "./Components/register";
 import ProductItem from "./Components/productItem";
+import NotFound from "./Components/NotFound.jsx";
 library.add(fas);
 
 class App extends Component {
@@ -87,6 +88,9 @@ class App extends Component {
           <div className="row">
             <div className="col">
               <Switch>
+                <Route path={"/Not-Found"}>
+                  <NotFound />
+                </Route>
                 <Route path={"/login"}>
                   <Login />
                 </Route>
@@ -108,7 +112,7 @@ class App extends Component {
                   )}
                 ></Route>
                 <Route
-                  path={"/productItem/:id?"}
+                  path={"/productItem/:id"}
                   render={(props) => (
                     <ProductItem {...props} products={products} />
                   )}
@@ -126,9 +130,10 @@ class App extends Component {
                     />
                   )}
                 ></Route>
-                <Route path={"/"}>
+                <Route path={"/"} exact>
                   <Home />
                 </Route>
+                <Redirect to={"/Not-Found"}></Redirect>
               </Switch>
             </div>
           </div>

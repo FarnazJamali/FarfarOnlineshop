@@ -19,7 +19,7 @@ class Login extends Component {
       <>
         <div className="container mt-5">
           <div className="row justify-content-center">
-            <div className="col-6 mb-5 p-5 pb-2 border border-2 border-opacity-50 border-secondary rounded">
+            <div className="col-6 mb-5 p-5 pb-2 border border-2 border-opacity-50 border-secondary rounded shadow">
               <Formik
                 initialValues={LOGIN_INITIAL_VALUES}
                 onSubmit={onSubmit}
@@ -72,7 +72,7 @@ class Login extends Component {
                       </button>
                       <div>
                         <span>Don't you have an account?</span>
-                        <Link to={"/register/"}>Register here</Link>
+                        <Link to={"/register/"}> Register here</Link>
                       </div>
                     </div>
                   </div>
