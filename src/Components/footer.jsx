@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <>
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark bg-dark fixed-bottom">
           <p className="text-light mx-auto">
             made with
             <FontAwesomeIcon

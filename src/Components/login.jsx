@@ -19,7 +19,7 @@ class Login extends Component {
       <>
         <div className="container mt-5">
           <div className="row justify-content-center">
-            <div className="col-6">
+            <div className="col-6 mb-5 p-5 pb-2 border border-2 border-opacity-50 border-secondary rounded">
               <Formik
                 initialValues={LOGIN_INITIAL_VALUES}
                 onSubmit={onSubmit}
@@ -37,7 +37,7 @@ class Login extends Component {
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="Fake Email"
+                        placeholder="Email Address"
                         className="form-control"
                       />
                       <ErrorMessage name="email">
@@ -54,7 +54,7 @@ class Login extends Component {
                         id="password"
                         name="password"
                         type="password"
-                        placeholder="Password PlaceHolder"
+                        placeholder="Password"
                         className="form-control"
                       />
                       <ErrorMessage name="password">

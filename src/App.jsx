@@ -9,6 +9,7 @@ import Home from "./Components/home";
 import Login from "./Components/login";
 import Basket from "./Components/basket";
 import Footer from "./Components/footer";
+import Register from "./Components/register";
 library.add(fas);
 
 class App extends Component {
@@ -39,7 +40,7 @@ class App extends Component {
     console.log(productIndex);
     if (!hasProduct) {
       shoppingCart.push(products[productIndex]);
-      shoppingCart[productIndex].count = 1;
+      shoppingCart[shoppingCart.length - 1].count = 1;
     } else {
       shoppingCart[shoppingCart.length - 1].count++;
     }
@@ -81,12 +82,15 @@ class App extends Component {
           onCheck={this.checkNumber}
         />
 
-        <div className="container-fluid mt-5 min-vh-100">
+        <div className="container-fluid my-5 min-vh-100">
           <div className="row">
             <div className="col">
               <Switch>
                 <Route path={"/login"}>
                   <Login />
+                </Route>
+                <Route path={"/register"}>
+                  <Register />
                 </Route>
                 <Route
                   path={"/basket"}
